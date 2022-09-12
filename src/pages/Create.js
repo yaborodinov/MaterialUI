@@ -3,7 +3,8 @@ import { Typography } from '@mui/material'
 import Button from '@mui/material/Button'
 // import ButtonGroup from '@mui/material/ButtonGroup'
 import Container from '@mui/material/Container'
-
+import AcUnitOutlinedIcon from '@mui/icons-material/AcUnitOutlined';
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 
 export default function Create() {
@@ -23,41 +24,16 @@ export default function Create() {
         type='submit'
         color='secondary'
         variant='contained'
+        endIcon={<ArrowForwardIcon />}
       >
         Submit
       </Button>
 
-      {/* <Button
-        variant='contained'
-        color="secondary"
-      >
-        Save
-      </Button>
-
-      <Button
-          variant='contained'
-          color='primary'
-        >
-          Check
-        </Button>
-      
-      <ButtonGroup color='secondary'>
-        <Button
-          variant='outlined'
-          color='primary'
-        >
-          This
-        </Button>
-        
-        <Button
-          variant='outlined'
-          color='secondary'
-        >
-          Outlined
-        </Button>
-      </ButtonGroup> */}
-
-
+      <br/>
+      <AcUnitOutlinedIcon />
+      <AcUnitOutlinedIcon color='primary' />
+      <AcUnitOutlinedIcon fontSize='small' />
+      <AcUnitOutlinedIcon fontSize='large'/>
     </Container>
   )
 }
