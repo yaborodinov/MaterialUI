@@ -1,30 +1,63 @@
 import React from 'react'
 import { Typography } from '@mui/material'
+import Button from '@mui/material/Button'
+// import ButtonGroup from '@mui/material/ButtonGroup'
+import Container from '@mui/material/Container'
+
+
 
 export default function Create() {
   return (
-    <div>
+    <Container>
       <Typography
         variant="h3"
         component="h1"
-        color="primary"
+        color='primary'
         align="center"
         gutterBottom
       >
         Create a new Note
       </Typography>
-      <Typography
-        color="secondary"
-        noWrap={true}
-        gutterBottom
+
+      <Button 
+        type='submit'
+        color='secondary'
+        variant='contained'
       >
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi mollitia ad odit odio cum illum quisquam soluta minima itaque rerum. Dolorum quam minima mollitia maiores, assumenda error asperiores quae explicabo! Quidem iure suscipit explicabo nam molestias illo doloribus saepe consequatur, numquam dolore dignissimos nostrum commodi?
-      </Typography>
-      <Typography
-        color="textSecondary"
+        Submit
+      </Button>
+
+      {/* <Button
+        variant='contained'
+        color="secondary"
       >
         Save
-      </Typography>
-    </div>
+      </Button>
+
+      <Button
+          variant='contained'
+          color='primary'
+        >
+          Check
+        </Button>
+      
+      <ButtonGroup color='secondary'>
+        <Button
+          variant='outlined'
+          color='primary'
+        >
+          This
+        </Button>
+        
+        <Button
+          variant='outlined'
+          color='secondary'
+        >
+          Outlined
+        </Button>
+      </ButtonGroup> */}
+
+
+    </Container>
   )
 }
