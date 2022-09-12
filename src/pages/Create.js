@@ -1,14 +1,23 @@
 import React from 'react'
 import { useState } from 'react'
-import { Typography } from '@mui/material'
+import { FormControl, FormLabel, FormControlLabel, Radio, RadioGroup, Typography } from '@mui/material'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TextField from '@mui/material/TextField';
 
-const TextFieldStyle = {
-  marginTop: 1,
-  marginBottom: 1,
+const style = {
+  field: {
+    marginTop: 1,
+    marginBottom: 1,
+    display: 'block'
+  },
+  changedSomething: {
+    color: 'green'
+  },
+  speciallyFontSize: {
+    fontSize: 33
+  }
 }
 
 export default function Create() {
@@ -16,6 +25,7 @@ const [title, setTitle] = useState('');
 const [details, setDetails] = useState('');
 const [errorTitle, setErrorTitle] = useState(false)
 const [errorDetails, setErrorDetails] = useState(false)
+const [category, setCategory] = useState(false)
 
 const checkTitleString = () => {
   title && title.trim() ? setErrorTitle(false) : setErrorTitle(true)
@@ -31,7 +41,7 @@ const handleSubmit = (e) => {
   checkDetailsString()
 
   if (title && details) {
-    console.log("it's ok!");
+    console.log(title, details, category);
   }
 }
   return (
@@ -56,7 +66,7 @@ const handleSubmit = (e) => {
           variant='outlined'
           fullWidth
           required
-          sx={TextFieldStyle}
+          sx={style.field}
           error={errorTitle}
         />
         <TextField 
@@ -70,15 +80,39 @@ const handleSubmit = (e) => {
           required
           multiline
           rows={3}
-          sx={TextFieldStyle}
+          sx={style.field}
           error={errorDetails}
         />
 
+        <FormControl 
+          sx={[
+            style.field,
+          ]}
+        >
+          <FormLabel
+            id="demo-radio-buttons-group-label"
+            sx={[
+              style.changedSomething,
+              style.speciallyFontSize
+            ]}
+          >Gender</FormLabel>
+          <RadioGroup
+            aria-labelledby="demo-radio-buttons-group-label"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <FormControlLabel value='female' control={<Radio />} label="Female" />
+            <FormControlLabel value='male' control={<Radio />} label="Male" />
+            <FormControlLabel value='other' control={<Radio />} label="Other" />
+          </RadioGroup>
+        </FormControl>
+        
         <Button 
           type='submit'
           color='secondary'
           variant='contained'
           endIcon={<ArrowForwardIcon />}
+          
         >
           Submit
         </Button>
