@@ -5,6 +5,8 @@ import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TextField from '@mui/material/TextField';
+import { Link, useHistory } from 'react-router-dom';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 const style = {
   field: {
@@ -27,6 +29,8 @@ const [errorTitle, setErrorTitle] = useState(false)
 const [errorDetails, setErrorDetails] = useState(false)
 const [category, setCategory] = useState(false)
 
+const history = useHistory();
+
 const checkTitleString = () => {
   title && title.trim() ? setErrorTitle(false) : setErrorTitle(true)
 }
@@ -40,12 +44,32 @@ const handleSubmit = (e) => {
   checkTitleString()
   checkDetailsString()
 
+  
   if (title && details) {
-    console.log(title, details, category);
+    fetch('http://localhost:3010/notes', {
+      method: 'POST',
+      headers: {"Content-type": "application/json"},
+      body: JSON.stringify({ title, details, category})
+    }).then(() => history.push('/'))
   }
+  
 }
   return (
     <Container>
+       <Button
+    type='button'
+    color='primary'
+    variant='contained'
+    startIcon={<ArrowBackIosNewIcon />}
+    component={Link}
+    to="/"
+    sx={{
+      backgroundColor: '#42a5f5',
+      marginTop: '20px'
+    }}
+    >
+      To results
+    </Button>
       <Typography
         variant="h3"
         component="h1"
