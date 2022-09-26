@@ -3,8 +3,8 @@ import { useState } from 'react';
 import Button from '@mui/material/Button';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Container from '@mui/material/Container';
-import { lightGreen } from '@mui/material/colors';
 import { Link } from 'react-router-dom';
+import { Grid, Paper } from '@mui/material';
 
 
 export default function Notes() {
@@ -29,9 +29,24 @@ export default function Notes() {
       Link to creation page
     </Button>
       <div>
-        {notes.map((note) => {
-          return <p key={note.id}>{note.title}</p>
-        })}
+        <Grid container sx={{margin: '20px 0'}}>
+          {notes.map((note) => {
+            return <Grid item xs={12}
+             sx={{
+              marginBottom: '10px',
+              }}
+              key={note.id}>
+              <Paper
+               elevation={2}
+                sx={{
+                  padding: '5px',
+                }}
+              >
+                {note.title}
+              </Paper>
+            </Grid>
+          })}
+        </Grid>
       </div>
     </Container>
     
